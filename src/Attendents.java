@@ -26,6 +26,10 @@ public class Attendents {
         return lastName;
     }
 
+    public String getName() {
+        return firstName + " " + lastName;
+    }
+
     public int getAge() {
         return age;
     }

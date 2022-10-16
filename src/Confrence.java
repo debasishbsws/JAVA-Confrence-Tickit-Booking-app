@@ -4,6 +4,8 @@ public interface Confrence {
 
     void greetUser();
 
+    int getRemaningTickits();
+
     boolean bookTickit(Attendents attendent);
 
     void run();

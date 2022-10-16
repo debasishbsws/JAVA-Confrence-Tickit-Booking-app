@@ -4,35 +4,34 @@ public class App {
 
     // JAVA confrence teckit booking app
     final static String CONFRENCE_NAME = "JavaOne Confrence";
-    final static int CONFRENCE_SEAT = 100;
 
     public static void main(String[] args) throws Exception {
 
         System.out.println("Wellcome to " + CONFRENCE_NAME);
-
-        int locationNo = chooseLocation();
-        if (locationNo == 1) {
-            System.out.println("You have selected " + locationNo + " for " + CONFRENCE_NAME);
-        } else {
-            System.out.println("You have selected " + locationNo + " for " + CONFRENCE_NAME);
+        KolkataConfrence kolkataConfrence = new KolkataConfrence();
+        SanFranciscoConfrence sanFranciscoConfrence = new SanFranciscoConfrence();
+        while (kolkataConfrence.getRemaningTickits() > 0 || sanFranciscoConfrence.getRemaningTickits() > 0) {
+            System.out.println("Please select your confrence location");
+            System.out.println("1. San Francisco, USA");
+            System.out.println("2. Kolkata, India");
+            System.out.println("3. Exit");
+            Scanner scanner = new Scanner(System.in);
+            int location = scanner.nextInt();
+            scanner.close();
+            switch (location) {
+                case 1:
+                    sanFranciscoConfrence.run();
+                    break;
+                case 2:
+                    kolkataConfrence.run();
+                    break;
+                case 3:
+                    System.out.println("Thank you for using our app");
+                    System.exit(0);
+                default:
+                    System.out.println("Please select a valid option");
+                    break;
+            }
         }
-    }
-
-    static int chooseLocation() {
-        System.out.println("To procede please choose the location of the confrence");
-        System.out.println("1. San Francisco, USA");
-        System.out.println("2. Kolkata, India");
-        Scanner scanner = new Scanner(System.in);
-        int locationNo = scanner.nextInt();
-        scanner.close();
-        if (locationNo < 1 || locationNo > 2) {
-            System.out.println("Please select a valid location");
-            chooseLocation();
-        }
-        return locationNo;
-    }
-
-    static void greetUser(int remainingTickits) {
-        System.out.println("Hello, there are " + remainingTickits + " tickits remaining");
     }
 }

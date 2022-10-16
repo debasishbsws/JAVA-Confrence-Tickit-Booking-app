@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
-public class KolkataConfrence implements Confrence {
-    final static int CONFRENCE_SEAT = 100;
+public class SanFranciscoConfrence implements Confrence {
+    final static int CONFRENCE_SEAT = 50;
     private int remainingTickits = CONFRENCE_SEAT;
     ArrayList<Attendents> attendents = new ArrayList<Attendents>();
     Helper helper = new Helper();
@@ -20,24 +20,19 @@ public class KolkataConfrence implements Confrence {
 
         attendents.add(attendent);
         remainingTickits -= attendent.getTickitCount();
-        // send tickits in email using helper in different thread
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                helper.sendTickitsInEmail(attendent);
-            }
-        }).start();
+        // not sending tickits in email
         return true;
     }
 
     @Override
     public void greetUser() {
-        System.out.println("Wellcome to " + CONFRENCE_NAME + "2022 - Kolkata, India");
+        System.out.println("Wellcome to " + CONFRENCE_NAME + "2022 - San Francisco, USA");
         if (remainingTickits > 0) {
             System.out.println("Hello, there are " + remainingTickits + " tickits remaining, Book yours now");
         } else {
             System.out.println("Sorry, all tickits are sold out, Please come back next Year");
         }
+
     }
 
     @Override
@@ -48,7 +43,7 @@ public class KolkataConfrence implements Confrence {
             Attendents attendent;
             do {
                 attendent = helper.getAttendentsData();
-            } while (!helper.validateUser(attendent, 16));
+            } while (!helper.validateUser(attendent, 14));
 
             if (bookTickit(attendent)) {
                 System.out.println(
@@ -57,6 +52,7 @@ public class KolkataConfrence implements Confrence {
                 System.out.println("Sorry, we are unable to book your tickits, Please try again later");
             }
         }
+
     }
 
 }

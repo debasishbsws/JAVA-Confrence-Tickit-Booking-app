@@ -2,6 +2,23 @@ import java.util.Scanner;
 
 public class Helper {
 
+    public void sendTickitsInEmail(Attendents attendent) {
+        // send tickits in email
+        try {
+            System.out.println("Generating tickits in email");
+            Thread.sleep(5000);
+            String emailString = "Dear " + attendent.getName() + ",\n\n"
+                    + "Thank you for booking " + attendent.getTickitCount() + " tickits for " + Confrence.CONFRENCE_NAME
+                    + "2022. Your tickits are attached with this email.\n\n"
+                    + "Please show this email at the venue to get your tickits.\n\n"
+                    + "Regards,\n" + Confrence.CONFRENCE_NAME + "2022 Team";
+            System.out.println(emailString + "\n");
+            System.out.println("Tickits sent successfully to " + attendent.getEmail() + "\n");
+        } catch (InterruptedException e) {
+            System.out.println("Error while sending tickits in email");
+        }
+    }
+
     public Attendents getAttendentsData() {
         // taking user input
         Scanner scanner = new Scanner(System.in);
@@ -84,4 +101,5 @@ public class Helper {
         }
         return false;
     }
+
 }
