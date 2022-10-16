@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 public class Helper {
 
+    Scanner scanner = new Scanner(System.in);
+
     public void sendTickitsInEmail(Attendents attendent) {
         // send tickits in email
         try {
@@ -21,21 +23,20 @@ public class Helper {
 
     public Attendents getAttendentsData() {
         // taking user input
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter your first name");
         String firstName = scanner.nextLine();
         System.out.println("Please enter your last name");
         String lastName = scanner.nextLine();
         System.out.println("Please enter your age");
         int age = scanner.nextInt();
+        scanner.nextLine();
         System.out.println("Please enter your email");
         String email = scanner.nextLine();
         System.out.println("Please enter your phone");
         String phone = scanner.nextLine();
         System.out.println("Please enter the number of tickits you want to book");
         int tickitCount = scanner.nextInt();
-        scanner.close();
-
+        scanner.nextLine();
         return new Attendents(firstName, lastName, age, email, phone, tickitCount);
     }
 

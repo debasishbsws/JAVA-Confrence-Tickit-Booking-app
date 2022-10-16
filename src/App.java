@@ -17,7 +17,6 @@ public class App {
             System.out.println("3. Exit");
             Scanner scanner = new Scanner(System.in);
             int location = scanner.nextInt();
-            scanner.close();
             switch (location) {
                 case 1:
                     sanFranciscoConfrence.run();
